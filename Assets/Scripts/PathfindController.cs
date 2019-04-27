@@ -154,19 +154,29 @@ public class PathfindController : MonoBehaviour
 
         List<Vector2Int> path = new List<Vector2Int>();
 
+        path.Add(to);
+        Vector2Int nextNode = to;
         do
         {
-            path.Add(currentNode);
-            currentNode = distance[currentNode].parent;
-        } while (currentNode != from);
+            var parent = distance[nextNode].parent;
+            if (!Passable(NodeAt(parent).position, NodeAt(currentNode).position))
+            {
+                path.Add(nextNode);
+                currentNode = nextNode;
+            }
+            nextNode = parent;
+        } while (nextNode != from);
         path.Add(from);
 
         return path;
     }
 
+    public Vector2Int from;
+    public Vector2Int to;
+
     // void OnDrawGizmos()
     // {
-    //     var path = Search();
+    //     var path = Search(from, to);
     //     if (path != null)
     //     {
     //         for (int a = 0; a + 1 < path.Count; a++)
@@ -174,51 +184,6 @@ public class PathfindController : MonoBehaviour
     //             Gizmos.DrawLine(NodeAt(path[a]).position, NodeAt(path[a + 1]).position);
     //         }
     //     }
-
-    //     Gizmos.color = Color.black;
-    //     int i = 0;
-    //     foreach (var node in visitedNodes)
-    //     {
-    //         if (i == limit) break;
-    //         Gizmos.color = Color.black;
-    //         Gizmos.DrawSphere(NodeAt(node).position, 0.05f);
-    //         i++;
-    //     }
-    //     {
-    //         var j = limit;
-    //         var a = NodeAt(visitedNodes[j]).position;
-    //         var b = NodeAt(to).position;
-
-    //         var xDiff = b.x - a.x;
-    //         var yDiff = b.y - a.y;
-    //         var minDiff = Mathf.Min(Mathf.Abs(xDiff), Mathf.Abs(yDiff));
-
-    //         var diagonal = a + new Vector2(minDiff * Mathf.Sign(xDiff), minDiff * Mathf.Sign(yDiff));
-    //         Gizmos.DrawLine(a, diagonal);
-    //         Gizmos.DrawLine(diagonal, b);
-    //     }
-    //     // int range = 10;
-    //     // for (int x = -range; x < range; x++)
-    //     // {
-    //     //     for (int y = -range; y < range; y++)
-    //     //     {
-    //     //         var node = NodeAt(new Vector2Int(x, y));
-    //     //         foreach (var conn in NeighborNodes(new Vector2Int(x, y)))
-    //     //         {
-    //     //             if (conn.passable)
-    //     //             {
-    //     //                 Gizmos.color = Color.white;
-    //     //             }
-    //     //             else
-    //     //             {
-    //     //                 Gizmos.color = Color.black;
-    //     //             }
-    //     //             Gizmos.DrawLine(node.position, conn.position);
-    //     //         }
-    //     //     }
-    //     // }
-
-
 
     //     Gizmos.color = Color.green;
     //     Gizmos.DrawSphere(NodeAt(from).position, 0.1f);
