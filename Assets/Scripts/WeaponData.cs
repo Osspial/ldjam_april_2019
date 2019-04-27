@@ -8,4 +8,5 @@ public class WeaponData : ScriptableObject
     public float bulletSpeed = 30;
     public float knockback = 4;
     public float reloadTime = 0.4f;
+    public int reloadCost = 1;
 }

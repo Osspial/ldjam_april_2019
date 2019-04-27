@@ -8,12 +8,14 @@ public class Player : MonoBehaviour
     Rigidbody2D rigidbody;
 
     public float moveSpeedMultiplier = 10.0f;
-    public float shootKnockback = 1.0f;
     [Tooltip("max speed in relation to time since movement start")]
     public AnimationCurve maxSpeedCurve;
     public AnimationCurve timeSubtractAngleTurn;
     [Tooltip("gets capped at the length of the maxSpeed curve")]
     public float timeSinceMoveStart = 0.0f;
+
+    public IntChange health = new IntChange(4);
+    public IntEvent onHealthChange;
 
     public Weapon weapon;
 
@@ -53,7 +55,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetButtonDown("Reload"))
         {
-            weapon.Reload();
+            health.num -= weapon.Reload();
         }
 
         var maxSpeed = maxSpeedCurve.Evaluate(timeSinceMoveStart);
@@ -64,5 +66,12 @@ public class Player : MonoBehaviour
                 rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
             }
         }
+
+        if (health.changed)
+        {
+            onHealthChange.Invoke(health.num);
+        }
+
+        health.Reset();
     }
 }
