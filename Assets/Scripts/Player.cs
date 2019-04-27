@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     [Tooltip("gets capped at the length of the maxSpeed curve")]
     public float timeSinceMoveStart = 0.0f;
 
+    public Weapon weapon;
+
     public MoveWithRotation bulletTemplate;
 
     void Start()
@@ -45,10 +47,13 @@ public class Player : MonoBehaviour
         }
         rigidbody.velocity += moveDirection * Time.deltaTime;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Shoot"))
         {
-            rigidbody.velocity -= mouseDirection * shootKnockback;
-            Shoot(mouseDirection);
+            weapon.Shoot(mouseDirection);
+        }
+        if (Input.GetButtonDown("Reload"))
+        {
+            weapon.Reload();
         }
 
         var maxSpeed = maxSpeedCurve.Evaluate(timeSinceMoveStart);
@@ -59,12 +64,5 @@ public class Player : MonoBehaviour
                 rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
             }
         }
-    }
-
-    void Shoot(Vector2 direction)
-    {
-        MoveWithRotation bullet = Instantiate(bulletTemplate);
-        bullet.transform.position = transform.position;
-        bullet.direction = direction;
     }
 }
