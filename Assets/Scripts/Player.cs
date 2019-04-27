@@ -99,7 +99,12 @@ public class Player : MonoBehaviour
         }
 
         health.Reset();
-        animator.SetFloat("velX", Mathf.Round(Mathf.Clamp(rigidbody.velocity.x, -1, 1)));
-        animator.SetFloat("velY", Mathf.Round(Mathf.Clamp(rigidbody.velocity.y, -1, 1)));
+        var lookDirection = rigidbody.velocity;
+        if (weapon.pulled)
+        {
+            lookDirection = mouseDirection;
+        }
+        animator.SetFloat("velX", Mathf.Round(Mathf.Clamp(lookDirection.x, -1, 1)));
+        animator.SetFloat("velY", Mathf.Round(Mathf.Clamp(lookDirection.y, -1, 1)));
     }
 }
