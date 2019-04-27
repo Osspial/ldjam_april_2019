@@ -10,9 +10,11 @@ public class Weapon : MonoBehaviour
     public IntChange bulletsInClip;
     public IntEvent onAmmoChange;
     public WeaponData weaponData;
+    public Vector2 direction;
 
     private float lastShootTime = -1000;
-    public void Shoot(Vector2 direction)
+    public bool pulled = false;
+    public void PullTrigger()
     {
         if (bulletsInClip.num != 0 && Time.time - lastShootTime > weaponData.fireSpeed)
         {
@@ -23,7 +25,13 @@ public class Weapon : MonoBehaviour
             lastShootTime = Time.time;
             holder.velocity -= direction * weaponData.knockback;
             bullet.transform.position = transform.position;
+            pulled = true;
         }
+    }
+
+    public void ReleaseTrigger()
+    {
+        pulled = false;
     }
 
     private bool reloading = false;
@@ -55,11 +63,15 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
+        if (weaponData.autoFire && pulled)
+        {
+            PullTrigger();
+        }
+
         if (bulletsInClip.changed)
         {
             onAmmoChange.Invoke(bulletsInClip.num);
         }
-
         bulletsInClip.Reset();
     }
 }

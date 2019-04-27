@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d43423980c6df9f4e83d01148b3044e3, type: 3}
-  m_Name: Revolver
+  m_Name: Tommygun
   m_EditorClassIdentifier: 
-  clipSize: 6
-  autoFire: 0
-  fireSpeed: 0.2
+  clipSize: 20
+  autoFire: 1
+  fireSpeed: 0.1
   bulletSpeed: 30
-  knockback: 4
+  knockback: 2
   reloadTime: 0.4
   reloadCost: 1

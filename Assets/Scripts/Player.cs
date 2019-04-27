@@ -5,9 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-    Rigidbody2D rigidbody;
+    new Rigidbody2D rigidbody;
 
-    public float moveSpeedMultiplier = 10.0f;
+    public PlayerControlData controlData;
+    public PlayerControlData slideData;
+
+    private PlayerControlData activeData;
     [Tooltip("max speed in relation to time since movement start")]
     public AnimationCurve maxSpeedCurve;
     public AnimationCurve timeSubtractAngleTurn;
@@ -34,9 +37,24 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (health.num == 0)
+        {
+            Destroy(gameObject);
+        }
+
+        if (Input.GetButton("Slide"))
+        {
+            activeData = slideData;
+        }
+        else
+        {
+            activeData = controlData;
+        }
+
         Vector2 axisDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         Vector2 mouseDirection = (mousePosition - transform.position.xy()).normalized;
-        Vector2 moveDirection = axisDirection * moveSpeedMultiplier;
+        Vector2 moveDirection = axisDirection * activeData.moveSpeedMultiplier;
+        rigidbody.drag = activeData.linearDrag;
 
         if (moveDirection.magnitude > 0)
         {
@@ -49,9 +67,14 @@ public class Player : MonoBehaviour
         }
         rigidbody.velocity += moveDirection * Time.deltaTime;
 
+        weapon.direction = mouseDirection;
         if (Input.GetButtonDown("Shoot"))
         {
-            weapon.Shoot(mouseDirection);
+            weapon.PullTrigger();
+        }
+        if (Input.GetButtonUp("Shoot"))
+        {
+            weapon.ReleaseTrigger();
         }
         if (Input.GetButtonDown("Reload"))
         {
@@ -61,10 +84,10 @@ public class Player : MonoBehaviour
         var maxSpeed = maxSpeedCurve.Evaluate(timeSinceMoveStart);
         if (moveDirection.magnitude > 0 && Vector2.Dot(rigidbody.velocity, moveDirection) > 0)
         {
-            if (rigidbody.velocity.magnitude > maxSpeed)
-            {
-                rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
-            }
+            // if (rigidbody.velocity.magnitude > maxSpeed)
+            // {
+            //     rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
+            // }
         }
 
         if (health.changed)
