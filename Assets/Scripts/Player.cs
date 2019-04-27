@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public class Player : MonoBehaviour
 {
     new Rigidbody2D rigidbody;
+    Animator animator;
 
     public PlayerControlData controlData;
     public PlayerControlData slideData;
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     Vector2 mousePosition
@@ -96,5 +99,7 @@ public class Player : MonoBehaviour
         }
 
         health.Reset();
+        animator.SetFloat("velX", Mathf.Round(Mathf.Clamp(rigidbody.velocity.x, -1, 1)));
+        animator.SetFloat("velY", Mathf.Round(Mathf.Clamp(rigidbody.velocity.y, -1, 1)));
     }
 }
