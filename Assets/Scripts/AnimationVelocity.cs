@@ -14,6 +14,7 @@ public class AnimationVelocity : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
