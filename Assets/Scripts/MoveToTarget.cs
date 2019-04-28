@@ -1,0 +1,80 @@
+﻿using System.Collections;
+using System.Linq;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+[RequireComponent(typeof(Rigidbody2D))]
+public class MoveToTarget : MonoBehaviour
+{
+    public Vector2 target;
+    public float acceleration = 1;
+    public float maxSpeed = 2;
+    public AvoidWallsCollider avoidWallsCollider;
+    public float avoidStrength = 1;
+
+    new Rigidbody2D rigidbody;
+    List<Vector2> path = null;
+
+    private Vector2? activeTarget;
+    void Start()
+    {
+        rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        target = FindObjectOfType<Player>().transform.position;
+        if (Vector2.Distance(transform.position.xy(), target) >= 0.1)
+        {
+            path = PathfindController.instance.Search(transform.position.xy(), target);
+        }
+
+        if (path != null)
+        {
+            if (path.Count > 1)
+            {
+                if (PathfindController.instance.Passable(transform.position, path[Math.Max(path.Count - 2, 0)]))
+                {
+                    path.RemoveAt(path.Count - 1);
+                }
+                else if (path.Count > 0)
+                {
+                    activeTarget = path.Last() - transform.position.xy();
+                }
+            }
+            else if (path.Count == 1 && Vector2.Distance(transform.position, path.Last()) >= 0.1)
+            {
+                activeTarget = path.Last() - transform.position.xy();
+            }
+            else
+            {
+                activeTarget = null;
+                path = null;
+            }
+        }
+
+        rigidbody.velocity += (activeTarget?.normalized ?? Vector2.zero) * acceleration * Time.deltaTime;
+        rigidbody.velocity = Vector2.ClampMagnitude(rigidbody.velocity, maxSpeed);
+
+        var velocity = rigidbody.velocity;
+        avoidWallsCollider.AdjustVelocityAwayFromWalls(ref velocity, (activeTarget - transform.position) ?? Vector2.zero, avoidStrength);
+        rigidbody.velocity = velocity;
+    }
+
+    void OnDrawGizmos()
+    {
+        if (path != null)
+        {
+            for (int i = 0; i + 1 < path.Count; i++)
+            {
+                Gizmos.DrawLine(path[i], path[i + 1]);
+            }
+            if (path.Count == 1)
+            {
+                Gizmos.DrawLine(transform.position.xy(), path[0]);
+            }
+        }
+    }
+}

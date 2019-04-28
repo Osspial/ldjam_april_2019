@@ -31,7 +31,7 @@ public class CameraLag : MonoBehaviour
         transform.position = new Vector3(setPosition.x, setPosition.y, transform.position.z);
     }
 
-    void OnDrawGizmos()
+    void OnDrawGizmosSelected()
     {
         Gizmos.DrawSphere(realPosition, 0.1f);
     }

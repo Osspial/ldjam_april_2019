@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class PathfindController : MonoBehaviour
 {
+    public static PathfindController instance;
+
     public float nodeDistance = 1.0f;
     public Vector2 nodeOffset = Vector2.zero;
     public LayerMask layerMask;
+
+    void OnEnable()
+    {
+        instance = this;
+    }
 
     struct Node
     {
@@ -31,7 +38,7 @@ public class PathfindController : MonoBehaviour
         pos -= nodeOffset;
         return new Vector2Int(Mathf.RoundToInt(pos.x / nodeDistance), Mathf.RoundToInt(pos.y / nodeDistance));
     }
-    bool Passable(Vector2 a, Vector2 b) => !(Physics2D.Linecast(a, b, layerMask) || Physics2D.Linecast(b, a, layerMask));
+    public bool Passable(Vector2 a, Vector2 b) => !(Physics2D.Linecast(a, b, layerMask) || Physics2D.Linecast(b, a, layerMask));
 
     NodeConnection[] NeighborNodes(Vector2Int id)
     {
@@ -93,14 +100,14 @@ public class PathfindController : MonoBehaviour
     }
     // public int limit = 0;
     // List<Vector2Int> visitedNodes = new List<Vector2Int>();
-    public List<Vector2Int> Search(Vector2 fromPos, Vector2 toPos)
+    public List<Vector2> Search(Vector2 fromPos, Vector2 toPos)
     {
         var from = NodeAtPos(fromPos);
         var to = NodeAtPos(toPos);
 
         if (from == to)
         {
-            return new List<Vector2Int>();
+            return new List<Vector2>();
         }
         // Map of nodes to their parent nodes
         var distance = new Dictionary<Vector2Int, NodeDistance>();
@@ -154,21 +161,20 @@ public class PathfindController : MonoBehaviour
             unvisitedNeighbors.RemoveAt(unvisitedNeighbors.Count - 1);
         }
 
-        List<Vector2Int> path = new List<Vector2Int>();
+        List<Vector2> path = new List<Vector2>();
 
-        path.Add(to);
+        path.Add(NodeAt(to).position);
         Vector2Int nextNode = to;
         do
         {
             var parent = distance[nextNode].parent;
             if (!Passable(NodeAt(parent).position, NodeAt(currentNode).position))
             {
-                path.Add(nextNode);
+                path.Add(NodeAt(nextNode).position);
                 currentNode = nextNode;
             }
             nextNode = parent;
         } while (nextNode != from);
-        path.Add(from);
 
         return path;
     }
