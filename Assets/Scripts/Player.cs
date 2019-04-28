@@ -12,11 +12,13 @@ public class Player : MonoBehaviour
     Animator animator;
     Health health;
 
-    public float sprintTime = 1.0f;
-    public float sprintRecharge = 0.1f;
-    public float sprintUsed = 0.0f;
-    public float sprintRegain = 0.8f;
+    public float sprintTime = 10;
+    public float sprintUseRate = 1;
+    public float sprintRecharge = 0.5f;
+    public float sprintUsed = 0;
+    public float sprintRegain = 8;
     public bool sprintRecovering = false;
+    public IntEvent sprintChanged;
     public PlayerControlData walkControlData;
     public PlayerControlData sprintControlData;
     public PlayerControlData slideData;
@@ -54,7 +56,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetButton("Sprint") && !sprintRecovering)
         {
-            sprintUsed += Time.deltaTime;
+            sprintUsed += Time.deltaTime * sprintUseRate;
             activeData = sprintControlData;
         }
         else
@@ -63,6 +65,8 @@ public class Player : MonoBehaviour
             activeData = walkControlData;
         }
         sprintUsed = Mathf.Clamp(sprintUsed, 0.0f, sprintTime);
+
+        sprintChanged.Invoke(Mathf.RoundToInt(sprintTime - sprintUsed));
 
         Vector2 axisDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         Vector2 mouseDirection = (mousePosition - transform.position.xy()).normalized;
