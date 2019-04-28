@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {x: 0, y: 0}
   acceleration: 17.01
+  deceleration: 2
   maxSpeed: 8.76
   avoidWallsCollider: {fileID: 1021397244199274893}
   avoidStrength: 0.05

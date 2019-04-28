@@ -8848,26 +8848,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin
       objectReference: {fileID: 0}
-    - target: {fileID: 1021397243205305579, guid: 94541bf8f87de854391671bb22971ec4,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1021397243205305579, guid: 94541bf8f87de854391671bb22971ec4,
-        type: 3}
-      propertyPath: acceleration
-      value: 13.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 1021397243205305579, guid: 94541bf8f87de854391671bb22971ec4,
-        type: 3}
-      propertyPath: deceleration
-      value: 29.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1021397243205305579, guid: 94541bf8f87de854391671bb22971ec4,
-        type: 3}
-      propertyPath: avoidStrength
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 1021397243205305580, guid: 94541bf8f87de854391671bb22971ec4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8922,6 +8902,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021397243205305579, guid: 94541bf8f87de854391671bb22971ec4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021397243205305579, guid: 94541bf8f87de854391671bb22971ec4,
+        type: 3}
+      propertyPath: acceleration
+      value: 13.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021397243205305579, guid: 94541bf8f87de854391671bb22971ec4,
+        type: 3}
+      propertyPath: deceleration
+      value: 29.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021397243205305579, guid: 94541bf8f87de854391671bb22971ec4,
+        type: 3}
+      propertyPath: avoidStrength
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94541bf8f87de854391671bb22971ec4, type: 3}
