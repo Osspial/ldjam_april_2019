@@ -3575,7 +3575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AssetsPPU: 16
   m_RefResolutionX: 320
-  m_RefResolutionY: 320
+  m_RefResolutionY: 240
   m_UpscaleRT: 0
   m_PixelSnapping: 1
   m_CropFrameX: 0
@@ -15110,76 +15110,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6545206486331397271, guid: d787410deb280794d89c58f92772b4ac,
-        type: 3}
-      propertyPath: onAmmoChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 801205344}
     - target: {fileID: 704316216, guid: d787410deb280794d89c58f92772b4ac, type: 3}
       propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1654724110}
     - target: {fileID: 6545206486331397270, guid: d787410deb280794d89c58f92772b4ac,
         type: 3}
-      propertyPath: sprintChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6545206486331397270, guid: d787410deb280794d89c58f92772b4ac,
-        type: 3}
-      propertyPath: sprintControlData
-      value: 
-      objectReference: {fileID: 11400000, guid: 6fab8929c160d204f9f12220bc085e88,
-        type: 2}
-    - target: {fileID: 6545206486331397270, guid: d787410deb280794d89c58f92772b4ac,
-        type: 3}
-      propertyPath: walkControlData
-      value: 
-      objectReference: {fileID: 11400000, guid: 491c44c899ce2604ca4081ba4375c17d,
-        type: 2}
-    - target: {fileID: 6545206486331397270, guid: d787410deb280794d89c58f92772b4ac,
-        type: 3}
-      propertyPath: sprintRecharge
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6545206486331397270, guid: d787410deb280794d89c58f92772b4ac,
-        type: 3}
-      propertyPath: sprintChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6545206486331397270, guid: d787410deb280794d89c58f92772b4ac,
-        type: 3}
-      propertyPath: sprintChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6545206486331397270, guid: d787410deb280794d89c58f92772b4ac,
-        type: 3}
       propertyPath: sprintChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1083276930}
-    - target: {fileID: 6545206486331397270, guid: d787410deb280794d89c58f92772b4ac,
-        type: 3}
-      propertyPath: sprintChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_count
-      objectReference: {fileID: 0}
-    - target: {fileID: 6545206486331397270, guid: d787410deb280794d89c58f92772b4ac,
-        type: 3}
-      propertyPath: sprintChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6545206486331397270, guid: d787410deb280794d89c58f92772b4ac,
-        type: 3}
-      propertyPath: sprintTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6545206486331397270, guid: d787410deb280794d89c58f92772b4ac,
-        type: 3}
-      propertyPath: sprintRegain
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6545206486331397270, guid: d787410deb280794d89c58f92772b4ac,
-        type: 3}
-      propertyPath: sprintUseRate
-      value: 10
-      objectReference: {fileID: 0}
+    - target: {fileID: 788980560, guid: d787410deb280794d89c58f92772b4ac, type: 3}
+      propertyPath: onAmmoChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 801205344}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d787410deb280794d89c58f92772b4ac, type: 3}

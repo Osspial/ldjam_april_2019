@@ -44,6 +44,7 @@ public class Weapon : MonoBehaviour
     {
         IEnumerator ReloadCoroutine()
         {
+            source.PlayOneShot(weaponData.reload);
             yield return new WaitForSeconds(weaponData.reloadTime);
             bulletsInClip.num = weaponData.clipSize;
             reloading = false;

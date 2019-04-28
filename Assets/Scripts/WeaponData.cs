@@ -12,4 +12,5 @@ public class WeaponData : ScriptableObject
     public int reloadCost = 1;
     public int damage = 1;
     public AudioClip[] sound;
+    public AudioClip reload;
 }
