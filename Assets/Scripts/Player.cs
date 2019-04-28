@@ -4,10 +4,12 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Health))]
 public class Player : MonoBehaviour
 {
     new Rigidbody2D rigidbody;
     Animator animator;
+    Health health;
 
     public PlayerControlData controlData;
     public PlayerControlData slideData;
@@ -19,9 +21,6 @@ public class Player : MonoBehaviour
     [Tooltip("gets capped at the length of the maxSpeed curve")]
     public float timeSinceMoveStart = 0.0f;
 
-    public IntChange health = new IntChange(4);
-    public IntEvent onHealthChange;
-
     public Weapon weapon;
 
     public MoveWithRotation bulletTemplate;
@@ -30,6 +29,7 @@ public class Player : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        health = GetComponent<Health>();
     }
 
     Vector2 mousePosition
@@ -40,11 +40,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health.num == 0)
-        {
-            Destroy(gameObject);
-        }
-
         if (Input.GetButton("Slide"))
         {
             activeData = slideData;
@@ -81,7 +76,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetButtonDown("Reload"))
         {
-            health.num -= weapon.Reload();
+            health.health -= weapon.Reload();
         }
 
         var maxSpeed = maxSpeedCurve.Evaluate(timeSinceMoveStart);
@@ -93,12 +88,6 @@ public class Player : MonoBehaviour
             // }
         }
 
-        if (health.changed)
-        {
-            onHealthChange.Invoke(health.num);
-        }
-
-        health.Reset();
         var lookDirection = rigidbody.velocity;
         if (weapon.pulled)
         {

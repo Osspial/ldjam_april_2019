@@ -28,6 +28,7 @@ public class Weapon : MonoBehaviour
             lastShootTime = Time.time;
             holder.velocity -= direction * weaponData.knockback;
             bullet.transform.position = transform.position;
+            bullet.GetComponent<TriggerBullet>().damage = weaponData.damage;
             pulled = true;
             source.PlayOneShot(weaponData.sound[Random.Range(0, weaponData.sound.Length - 1)]);
         }

@@ -17,7 +17,7 @@ TagManager:
   - PlayerBulllet
   - Wall
   - WallAvoid
-  - Enemies
+  - EnemyDamage
   - 
   - 
   - 

@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipSize: 6
   autoFire: 0
-  fireSpeed: 0.2
+  fireSpeed: 0.53
   bulletSpeed: 30
-  knockback: 4
+  knockback: 6
   reloadTime: 0.4
   reloadCost: 1
-  sound: []
+  damage: 6
+  sound:
+  - {fileID: 8300000, guid: 34562011df2e8be41bf31b0ed7485413, type: 3}

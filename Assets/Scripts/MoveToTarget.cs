@@ -7,7 +7,13 @@ using System;
 [RequireComponent(typeof(Rigidbody2D))]
 public class MoveToTarget : MonoBehaviour
 {
-    public Vector2 target;
+    [SerializeField]
+    private Vector2 Target;
+    public Vector2 target
+    {
+        get => Target;
+        set => Target = value;
+    }
     public float acceleration = 1;
     public float maxSpeed = 2;
     public AvoidWallsCollider avoidWallsCollider;
@@ -25,7 +31,6 @@ public class MoveToTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        target = FindObjectOfType<Player>().transform.position;
         if (Vector2.Distance(transform.position.xy(), target) >= 0.1)
         {
             path = PathfindController.instance.Search(transform.position.xy(), target);
