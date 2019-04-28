@@ -15,6 +15,7 @@ public class MoveToTarget : MonoBehaviour
         set => Target = value;
     }
     public float acceleration = 1;
+    public float deceleration = 2;
     public float maxSpeed = 2;
     public AvoidWallsCollider avoidWallsCollider;
     public float avoidStrength = 1;
@@ -60,7 +61,9 @@ public class MoveToTarget : MonoBehaviour
             }
         }
 
-        rigidbody.velocity += (activeTarget?.normalized ?? Vector2.zero) * acceleration * Time.deltaTime;
+        var idealVelocity = (activeTarget?.normalized ?? Vector2.zero) * maxSpeed;
+        var delta = (idealVelocity - rigidbody.velocity).normalized * acceleration * Time.deltaTime;
+        rigidbody.velocity += delta;
         rigidbody.velocity = Vector2.ClampMagnitude(rigidbody.velocity, maxSpeed);
 
         var velocity = rigidbody.velocity;

@@ -20,7 +20,7 @@ public class AnimationVelocity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.SetFloat(keyVelocityX, rigidbody.velocity.x);
-        animator.SetFloat(keyVelocityY, rigidbody.velocity.y);
+        animator.SetFloat(keyVelocityX, Mathf.Round(Mathf.Clamp(rigidbody.velocity.x, -1, 1)));
+        animator.SetFloat(keyVelocityY, Mathf.Round(Mathf.Clamp(rigidbody.velocity.y, -1, 1)));
     }
 }

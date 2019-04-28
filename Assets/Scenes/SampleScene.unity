@@ -1331,6 +1331,15 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: 0, y: 5, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
   - first: {x: 2, y: 5, z: 0}
     second:
       m_TileIndex: 4
@@ -1368,7 +1377,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: cecd9fd054b6abe4e8512bf40052d369, type: 2}
   - m_RefCount: 6
     m_Data: {fileID: 11400000, guid: 89f6d3aeb8785b941a46211199b5826f, type: 2}
-  - m_RefCount: 3
+  - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 665eda8abad438f449e228c5cacb875c, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 2f56a961d19c3f44192963ce6c4b3783, type: 2}
@@ -1385,7 +1394,7 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 63040af84c9f0304f8366e9e729f8728, type: 3}
   - m_RefCount: 6
     m_Data: {fileID: 21300000, guid: c33b4992936e0cb41a0f611a190347db, type: 3}
-  - m_RefCount: 3
+  - m_RefCount: 4
     m_Data: {fileID: 21300000, guid: e0a5a4b66a6ed8a43b4d84466582c0e2, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: a5b18569531235a4083e80d2d01fd50f, type: 3}
@@ -1394,7 +1403,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 11d6c6e5998b28d499d96b0c0f7cadaa, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 24
+  - m_RefCount: 25
     m_Data:
       e00: 1
       e01: 0
@@ -1413,7 +1422,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 24
+  - m_RefCount: 25
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: -2.2831831e+21, g: -2.2831831e+21, b: -2.2831831e+21, a: -2.2831831e+21}
@@ -8838,6 +8847,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021397243205305579, guid: 94541bf8f87de854391671bb22971ec4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021397243205305579, guid: 94541bf8f87de854391671bb22971ec4,
+        type: 3}
+      propertyPath: acceleration
+      value: 13.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021397243205305579, guid: 94541bf8f87de854391671bb22971ec4,
+        type: 3}
+      propertyPath: deceleration
+      value: 29.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021397243205305579, guid: 94541bf8f87de854391671bb22971ec4,
+        type: 3}
+      propertyPath: avoidStrength
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1021397243205305580, guid: 94541bf8f87de854391671bb22971ec4,
         type: 3}
