@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Weapon : MonoBehaviour
 {
     public Rigidbody2D holder;
@@ -11,6 +12,8 @@ public class Weapon : MonoBehaviour
     public IntEvent onAmmoChange;
     public WeaponData weaponData;
     public Vector2 direction;
+
+    private AudioSource source;
 
     private float lastShootTime = -1000;
     public bool pulled = false;
@@ -26,6 +29,7 @@ public class Weapon : MonoBehaviour
             holder.velocity -= direction * weaponData.knockback;
             bullet.transform.position = transform.position;
             pulled = true;
+            source.PlayOneShot(weaponData.sound[Random.Range(0, weaponData.sound.Length - 1)]);
         }
     }
 
@@ -59,6 +63,7 @@ public class Weapon : MonoBehaviour
     void Start()
     {
         bulletsInClip.num = weaponData.clipSize;
+        source = GetComponent<AudioSource>();
     }
 
     void Update()

@@ -19,3 +19,4 @@ MonoBehaviour:
   knockback: 4
   reloadTime: 0.4
   reloadCost: 1
+  sound: []

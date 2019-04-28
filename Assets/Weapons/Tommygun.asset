@@ -19,3 +19,9 @@ MonoBehaviour:
   knockback: 2
   reloadTime: 0.4
   reloadCost: 1
+  sound:
+  - {fileID: 8300000, guid: cbf4bcb48ca700b43bab59172164ddb6, type: 3}
+  - {fileID: 8300000, guid: dd6a03fbb6a9b3e4596bfc010dd12f2e, type: 3}
+  - {fileID: 8300000, guid: b142fdd940a280843b0bfa1574423ad8, type: 3}
+  - {fileID: 8300000, guid: c8f528f5714486c40bffefe229586b85, type: 3}
+  - {fileID: 8300000, guid: 2856070df578fa74bbd825caf7b561f6, type: 3}
