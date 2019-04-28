@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ActivateOnSeePlayer : MonoBehaviour
 {
-    public BoolEvent activate;
+    public bool inNoticeTrigger = false;
+    public BoolEvent isVisible;
     Player player;
 
+    private bool lastVisibleInvokeVal = false;
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -17,7 +20,16 @@ public class ActivateOnSeePlayer : MonoBehaviour
     {
         if (PathfindController.instance.Passable(transform.position, player.transform.position))
         {
-            activate.Invoke(true);
+            if (inNoticeTrigger)
+            {
+                lastVisibleInvokeVal = true;
+                isVisible.Invoke(true);
+            }
+        }
+        else if (lastVisibleInvokeVal)
+        {
+            lastVisibleInvokeVal = false;
+            isVisible.Invoke(false);
         }
     }
 }
