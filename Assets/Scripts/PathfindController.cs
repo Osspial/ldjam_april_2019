@@ -5,6 +5,7 @@ using UnityEngine;
 public class PathfindController : MonoBehaviour
 {
     public float nodeDistance = 1.0f;
+    public Vector2 nodeOffset = Vector2.zero;
     public LayerMask layerMask;
 
     struct Node
@@ -19,7 +20,7 @@ public class PathfindController : MonoBehaviour
     }
     Node NodeAt(Vector2Int id)
     {
-        var position = new Vector2(id.x * nodeDistance, id.y * nodeDistance);
+        var position = new Vector2(id.x * nodeDistance, id.y * nodeDistance) + nodeOffset;
         return new Node
         {
             position = position
@@ -27,6 +28,7 @@ public class PathfindController : MonoBehaviour
     }
     Vector2Int NodeAtPos(Vector2 pos)
     {
+        pos -= nodeOffset;
         return new Vector2Int(Mathf.RoundToInt(pos.x / nodeDistance), Mathf.RoundToInt(pos.y / nodeDistance));
     }
     bool Passable(Vector2 a, Vector2 b) => !(Physics2D.Linecast(a, b, layerMask) || Physics2D.Linecast(b, a, layerMask));
@@ -171,23 +173,27 @@ public class PathfindController : MonoBehaviour
         return path;
     }
 
-    public Vector2Int from;
-    public Vector2Int to;
+    void OnDrawGizmosSelected()
+    {
+        for (var x = -10; x <= 10; x++)
+        {
+            for (var y = -10; y <= 10; y++)
+            {
+                Gizmos.DrawWireSphere(NodeAt(new Vector2Int(x, y)).position, 0.1f);
+            }
+        }
+        // var path = Search(from, to);
+        // if (path != null)
+        // {
+        //     for (int a = 0; a + 1 < path.Count; a++)
+        //     {
+        //         Gizmos.DrawLine(NodeAt(path[a]).position, NodeAt(path[a + 1]).position);
+        //     }
+        // }
 
-    // void OnDrawGizmos()
-    // {
-    //     var path = Search(from, to);
-    //     if (path != null)
-    //     {
-    //         for (int a = 0; a + 1 < path.Count; a++)
-    //         {
-    //             Gizmos.DrawLine(NodeAt(path[a]).position, NodeAt(path[a + 1]).position);
-    //         }
-    //     }
-
-    //     Gizmos.color = Color.green;
-    //     Gizmos.DrawSphere(NodeAt(from).position, 0.1f);
-    //     Gizmos.color = Color.red;
-    //     Gizmos.DrawSphere(NodeAt(to).position, 0.1f);
-    // }
+        // Gizmos.color = Color.green;
+        // Gizmos.DrawSphere(NodeAt(from).position, 0.1f);
+        // Gizmos.color = Color.red;
+        // Gizmos.DrawSphere(NodeAt(to).position, 0.1f);
+    }
 }
