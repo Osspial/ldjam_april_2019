@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 93eb52e8404508842952b0d3b757b029
+guid: 2edbcae35df23204a90f5219e50c0b01
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -38,6 +38,33 @@ TextureImporter:
   - first:
       213: -582295756231807922
     second: Raymond_11
+  - first:
+      213: 5421863169817043510
+    second: Raymond_12
+  - first:
+      213: -2386051079651637912
+    second: Raymond_13
+  - first:
+      213: -6653173738034384675
+    second: Raymond_14
+  - first:
+      213: -2005458970262719699
+    second: Raymond_15
+  - first:
+      213: -7183351403473517941
+    second: Raymond_16
+  - first:
+      213: -1622169661263975008
+    second: Raymond_17
+  - first:
+      213: -1082753907600035171
+    second: Raymond_18
+  - first:
+      213: -2500509961721288847
+    second: Raymond_19
+  - first:
+      213: 8585548566266964335
+    second: Raymond_20
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -70,9 +97,9 @@ TextureImporter:
     filterMode: 0
     aniso: -1
     mipBias: -100
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -120,7 +147,7 @@ TextureImporter:
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -134,9 +161,9 @@ TextureImporter:
       name: Raymond_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 48
-        width: 14
+        x: 0
+        y: 160
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -145,7 +172,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18263f3641262834293151a38e28cfbc
+      spriteID: 0e99cc1e05159c946a3ef8663ce9e9c9
       internalID: -8372853357288324450
       vertices: []
       indices: 
@@ -155,9 +182,9 @@ TextureImporter:
       name: Raymond_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 48
-        width: 14
+        x: 16
+        y: 160
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -166,7 +193,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f63be2d68eeff0a488c50cbf4be40bd7
+      spriteID: a7cd26db8e155254a9e701ab430c36e9
       internalID: 6553417879893939642
       vertices: []
       indices: 
@@ -176,9 +203,9 @@ TextureImporter:
       name: Raymond_2
       rect:
         serializedVersion: 2
-        x: 33
-        y: 48
-        width: 14
+        x: 0
+        y: 144
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -187,7 +214,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b2322966b2206c48b81010d23a9a773
+      spriteID: f4ed4bc593f31af4da3b9656d035e19a
       internalID: 6646570931900466552
       vertices: []
       indices: 
@@ -197,9 +224,9 @@ TextureImporter:
       name: Raymond_3
       rect:
         serializedVersion: 2
-        x: 1
-        y: 32
-        width: 14
+        x: 16
+        y: 144
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -208,7 +235,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04d6ec9b136ed9646b29c460a39222e3
+      spriteID: ee692e0761a23734e8e6845e27427216
       internalID: 6757141695126762199
       vertices: []
       indices: 
@@ -218,9 +245,9 @@ TextureImporter:
       name: Raymond_4
       rect:
         serializedVersion: 2
-        x: 17
-        y: 32
-        width: 14
+        x: 0
+        y: 128
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -229,7 +256,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a437e4a7bdfc00f4784b56f75cb0615b
+      spriteID: d03e7df03c4b35842870e1da732e9824
       internalID: 3017549849554953860
       vertices: []
       indices: 
@@ -239,9 +266,9 @@ TextureImporter:
       name: Raymond_5
       rect:
         serializedVersion: 2
-        x: 33
-        y: 32
-        width: 14
+        x: 16
+        y: 128
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -250,7 +277,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8365a672794e0c34fa6862cab8cc4250
+      spriteID: 85ca5d479d461c742ae6958b2be0a30e
       internalID: -7010393688808289886
       vertices: []
       indices: 
@@ -260,9 +287,9 @@ TextureImporter:
       name: Raymond_6
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 14
+        x: 0
+        y: 112
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -271,7 +298,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a182800fd53e454286e03fc0a689a24
+      spriteID: de98e5f3874690d4ea109f16cfd07722
       internalID: 6806818097303889161
       vertices: []
       indices: 
@@ -281,9 +308,9 @@ TextureImporter:
       name: Raymond_7
       rect:
         serializedVersion: 2
-        x: 1
-        y: 16
-        width: 14
+        x: 16
+        y: 112
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -292,7 +319,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7887156fd7a41347b1012d173a98e19
+      spriteID: 696f0880b65218a44ad0313eb4d3ffb8
       internalID: 7509885804950301556
       vertices: []
       indices: 
@@ -302,9 +329,9 @@ TextureImporter:
       name: Raymond_8
       rect:
         serializedVersion: 2
-        x: 17
-        y: 0
-        width: 14
+        x: 0
+        y: 96
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -313,7 +340,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1315352c9aa10440ab4853d1ebf6eac
+      spriteID: 2fdfef0ece5298f43b003ee5cc9c6aa4
       internalID: -6816178668466095416
       vertices: []
       indices: 
@@ -323,9 +350,9 @@ TextureImporter:
       name: Raymond_9
       rect:
         serializedVersion: 2
-        x: 17
-        y: 16
-        width: 14
+        x: 16
+        y: 96
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -334,7 +361,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c24f7f71c0e4f64c9e37f014324b419
+      spriteID: b4152a6f884232749a93496d45ffc0fe
       internalID: 132271532414415472
       vertices: []
       indices: 
@@ -344,9 +371,9 @@ TextureImporter:
       name: Raymond_10
       rect:
         serializedVersion: 2
-        x: 33
-        y: 16
-        width: 14
+        x: 0
+        y: 80
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -355,7 +382,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f59db28e58efb9445b4e8c38554aa7c7
+      spriteID: ac62410e066c76643a25787d0a3cf1f2
       internalID: 5037677165767267829
       vertices: []
       indices: 
@@ -365,9 +392,9 @@ TextureImporter:
       name: Raymond_11
       rect:
         serializedVersion: 2
-        x: 33
-        y: 0
-        width: 14
+        x: 16
+        y: 80
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -376,8 +403,197 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52ae1bad40d768040ae5abb484b56b0e
+      spriteID: a76751473156f7e4abd61b492c251f25
       internalID: -582295756231807922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raymond_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 683bfa9a98f7a1444b3acb7d25938568
+      internalID: 5421863169817043510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raymond_13
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4a550d791f13e748a134c416951e141
+      internalID: -2386051079651637912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raymond_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9367c8748c473354e8ccd3f838e36d92
+      internalID: -6653173738034384675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raymond_15
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd9f67b319aed06468d5a5026ca6bd66
+      internalID: -2005458970262719699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raymond_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5cc96e8745d45d4cafba23a66434a23
+      internalID: -7183351403473517941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raymond_17
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ad405c0b6d04cd4a8994f9bc891b965
+      internalID: -1622169661263975008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raymond_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7e9d76da3426e7409c64d9ca0a99226
+      internalID: -1082753907600035171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raymond_19
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12ea3fa1866ff6c478b3f33d56ddca5d
+      internalID: -2500509961721288847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raymond_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb3b143669420ea418b2b3d3ff66ea03
+      internalID: 8585548566266964335
       vertices: []
       indices: 
       edges: []
