@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -11,13 +12,16 @@ public class Player : MonoBehaviour
     Animator animator;
     Health health;
 
-    public PlayerControlData controlData;
+    public float sprintTime = 1.0f;
+    public float sprintRecharge = 0.1f;
+    public float sprintUsed = 0.0f;
+    public float sprintRegain = 0.8f;
+    public bool sprintRecovering = false;
+    public PlayerControlData walkControlData;
+    public PlayerControlData sprintControlData;
     public PlayerControlData slideData;
 
     private PlayerControlData activeData;
-    [Tooltip("max speed in relation to time since movement start")]
-    public AnimationCurve maxSpeedCurve;
-    public AnimationCurve timeSubtractAngleTurn;
     [Tooltip("gets capped at the length of the maxSpeed curve")]
     public float timeSinceMoveStart = 0.0f;
 
@@ -40,24 +44,42 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Slide"))
+        if (sprintUsed >= sprintTime)
         {
-            activeData = slideData;
+            sprintRecovering = true;
+        }
+        else if (sprintUsed <= sprintRegain)
+        {
+            sprintRecovering = false;
+        }
+        if (Input.GetButton("Sprint") && !sprintRecovering)
+        {
+            sprintUsed += Time.deltaTime;
+            activeData = sprintControlData;
         }
         else
         {
-            activeData = controlData;
+            sprintUsed -= sprintRecharge * Time.deltaTime;
+            activeData = walkControlData;
         }
+        sprintUsed = Mathf.Clamp(sprintUsed, 0.0f, sprintTime);
 
         Vector2 axisDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         Vector2 mouseDirection = (mousePosition - transform.position.xy()).normalized;
         Vector2 moveDirection = axisDirection * activeData.moveSpeedMultiplier;
-        rigidbody.drag = activeData.linearDrag;
+        if (axisDirection.magnitude > 0.1)
+        {
+            rigidbody.drag = activeData.walkingDrag;
+        }
+        else
+        {
+            rigidbody.drag = activeData.neutralDrag;
+        }
 
-        if (moveDirection.magnitude > 0)
+        if (moveDirection.magnitude > 0 || Vector2.Angle(axisDirection, rigidbody.velocity) >= 90)
         {
             timeSinceMoveStart += Time.deltaTime;
-            timeSinceMoveStart = Mathf.Min(timeSinceMoveStart, maxSpeedCurve.keys[maxSpeedCurve.keys.Length - 1].time);
+            timeSinceMoveStart = Mathf.Min(timeSinceMoveStart, activeData.maxSpeedCurve.keys.Last().time);
         }
         else
         {
@@ -79,7 +101,7 @@ public class Player : MonoBehaviour
             health.health -= weapon.Reload();
         }
 
-        var maxSpeed = maxSpeedCurve.Evaluate(timeSinceMoveStart);
+        var maxSpeed = activeData.maxSpeedCurve.Evaluate(timeSinceMoveStart);
         if (moveDirection.magnitude > 0 && Vector2.Dot(rigidbody.velocity, moveDirection) > 0)
         {
             // if (rigidbody.velocity.magnitude > maxSpeed)
@@ -95,5 +117,11 @@ public class Player : MonoBehaviour
         }
         animator.SetFloat("velX", Mathf.Round(Mathf.Clamp(lookDirection.x, -1, 1)));
         animator.SetFloat("velY", Mathf.Round(Mathf.Clamp(lookDirection.y, -1, 1)));
+        animator.SetFloat("speed", Mathf.Lerp(0.2f, 1.0f, normalizedSpeed));
+    }
+
+    private float normalizedSpeed
+    {
+        get => rigidbody.velocity.magnitude / sprintControlData.maxSpeedCurve.keys.Last().value;
     }
 }
