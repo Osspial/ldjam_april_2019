@@ -19,6 +19,7 @@ public class MoveToTarget : MonoBehaviour
     public float maxSpeed = 2;
     public AvoidWallsCollider avoidWallsCollider;
     public float avoidStrength = 1;
+    public Vector3Event facingDirection;
 
     new Rigidbody2D rigidbody;
     List<Vector2> path = null;
@@ -65,6 +66,7 @@ public class MoveToTarget : MonoBehaviour
         var delta = (idealVelocity - rigidbody.velocity).normalized * acceleration * Time.deltaTime;
         rigidbody.velocity += delta;
         rigidbody.velocity = Vector2.ClampMagnitude(rigidbody.velocity, maxSpeed);
+        facingDirection.Invoke(new Vector3(0, 0, Vector2.SignedAngle(Vector2.right, rigidbody.velocity.normalized)));
 
         var velocity = rigidbody.velocity;
         avoidWallsCollider.AdjustVelocityAwayFromWalls(ref velocity, (activeTarget - transform.position) ?? Vector2.zero, avoidStrength);

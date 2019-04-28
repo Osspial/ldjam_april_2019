@@ -11,8 +11,13 @@ public class TrackPlayerPos : MonoBehaviour
         player = FindObjectOfType<Player>();
     }
 
+    private Vector2 playerPosition;
     void Update()
     {
-        playerPos.Invoke(player.transform.position);
+        if (player != null)
+        {
+            playerPosition = player.transform.position;
+        }
+        playerPos.Invoke(playerPosition);
     }
 }

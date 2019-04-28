@@ -15,20 +15,23 @@ public class CameraLag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var damped = Vector2.SmoothDamp(realPosition, target.position, ref velocity, dampTime);
-        if ((damped - target.position.xy()).magnitude > maxDistance)
+        if (target)
         {
-            var newDamped = target.position.xy() + (damped - target.position.xy()).normalized * maxDistance;
-            damped = newDamped;
-        }
-        realPosition = new Vector3(damped.x, damped.y, transform.position.z);
+            var damped = Vector2.SmoothDamp(realPosition, target.position, ref velocity, dampTime);
+            if ((damped - target.position.xy()).magnitude > maxDistance)
+            {
+                var newDamped = target.position.xy() + (damped - target.position.xy()).normalized * maxDistance;
+                damped = newDamped;
+            }
+            realPosition = new Vector3(damped.x, damped.y, transform.position.z);
 
-        var setPosition = realPosition;
-        if ((maxDistance - (realPosition - target.position.xy()).magnitude) < snapToMaxDistance)
-        {
-            setPosition = target.position.xy() + (damped - target.position.xy()).normalized * maxDistance;
+            var setPosition = realPosition;
+            if ((maxDistance - (realPosition - target.position.xy()).magnitude) < snapToMaxDistance)
+            {
+                setPosition = target.position.xy() + (damped - target.position.xy()).normalized * maxDistance;
+            }
+            transform.position = new Vector3(setPosition.x, setPosition.y, transform.position.z);
         }
-        transform.position = new Vector3(setPosition.x, setPosition.y, transform.position.z);
     }
 
     void OnDrawGizmosSelected()

@@ -18,18 +18,21 @@ public class ActivateOnSeePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PathfindController.instance.Passable(transform.position, player.transform.position))
+        if (player)
         {
-            if (inNoticeTrigger)
+            if (PathfindController.instance.Passable(transform.position, player.transform.position))
             {
-                lastVisibleInvokeVal = true;
-                isVisible.Invoke(true);
+                if (inNoticeTrigger)
+                {
+                    lastVisibleInvokeVal = true;
+                    isVisible.Invoke(true);
+                }
             }
-        }
-        else if (lastVisibleInvokeVal)
-        {
-            lastVisibleInvokeVal = false;
-            isVisible.Invoke(false);
+            else if (lastVisibleInvokeVal)
+            {
+                lastVisibleInvokeVal = false;
+                isVisible.Invoke(false);
+            }
         }
     }
 }
