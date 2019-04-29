@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: 0d7f592d7777d4e48884a9bb5e62afce
+guid: 449a6d14e5f3d4846981803ac32cf930
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6326231466481203021
-    second: stars_0
+      213: 5447863933950748601
+    second: OakTree1_0
   - first:
-      213: -6859001260349468157
-    second: stars_1
-  - first:
-      213: -1177934027866655137
-    second: stars_2
+      213: -6563117172937961681
+    second: OakTree1_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -104,13 +101,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stars_0
+      name: OakTree1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 3
-        height: 3
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +115,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60b02083cfbe49e4e890cbd7ce577800
-      internalID: 6326231466481203021
+      spriteID: bd10783537fff884fa2d2f1801fbb70b
+      internalID: 5447863933950748601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stars_1
+      name: OakTree1_1
       rect:
         serializedVersion: 2
-        x: 3
+        x: 32
         y: 0
-        width: 3
-        height: 3
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,29 +136,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6379b3b3aa6baed40ba6997753a323ea
-      internalID: -6859001260349468157
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stars_2
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 0
-        width: 3
-        height: 3
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 625c9e9ffc97c574ba6ea42411db54f8
-      internalID: -1177934027866655137
+      spriteID: 2769bab29a9b46642a507959d4244c32
+      internalID: -6563117172937961681
       vertices: []
       indices: 
       edges: []
