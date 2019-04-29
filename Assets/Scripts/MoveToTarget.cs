@@ -20,6 +20,8 @@ public class MoveToTarget : MonoBehaviour
     public AvoidWallsCollider avoidWallsCollider;
     public float avoidStrength = 1;
     public Vector3Event facingDirection;
+    public LayerMask pathfindLayerMask;
+    public LayerMask viewLayerMask;
 
     new Rigidbody2D rigidbody;
     List<Vector2> path = null;
@@ -35,14 +37,14 @@ public class MoveToTarget : MonoBehaviour
     {
         if (Vector2.Distance(transform.position.xy(), target) >= 0.1)
         {
-            path = PathfindController.instance.Search(transform.position.xy(), target);
+            path = PathfindController.instance.Search(transform.position.xy(), target, pathfindLayerMask);
         }
 
         if (path != null)
         {
             if (path.Count > 1)
             {
-                if (PathfindController.instance.Passable(transform.position, path[Math.Max(path.Count - 2, 0)]))
+                if (PathfindController.instance.Passable(transform.position, path[Math.Max(path.Count - 2, 0)], viewLayerMask))
                 {
                     path.RemoveAt(path.Count - 1);
                 }
@@ -69,7 +71,7 @@ public class MoveToTarget : MonoBehaviour
         facingDirection.Invoke(new Vector3(0, 0, Vector2.SignedAngle(Vector2.right, rigidbody.velocity.normalized)));
 
         var velocity = rigidbody.velocity;
-        avoidWallsCollider.AdjustVelocityAwayFromWalls(ref velocity, (activeTarget - transform.position) ?? Vector2.zero, avoidStrength);
+        avoidWallsCollider?.AdjustVelocityAwayFromWalls(ref velocity, (activeTarget - transform.position) ?? Vector2.zero, avoidStrength);
         rigidbody.velocity = velocity;
     }
 

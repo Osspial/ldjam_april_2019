@@ -10,6 +10,7 @@ public class ActivateOnSeePlayer : MonoBehaviour
     Player player;
 
     private bool lastVisibleInvokeVal = false;
+    public LayerMask viewLayerMask;
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -20,7 +21,7 @@ public class ActivateOnSeePlayer : MonoBehaviour
     {
         if (player)
         {
-            if (PathfindController.instance.Passable(transform.position, player.transform.position))
+            if (PathfindController.instance.Passable(transform.position, player.transform.position, viewLayerMask))
             {
                 if (inNoticeTrigger)
                 {

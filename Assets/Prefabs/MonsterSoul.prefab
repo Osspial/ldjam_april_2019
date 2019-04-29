@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 1344689567}
   - component: {fileID: 1344689566}
   - component: {fileID: 1344689569}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: MonsterSoul
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -8,7 +8,7 @@ public class PathfindController : MonoBehaviour
 
     public float nodeDistance = 1.0f;
     public Vector2 nodeOffset = Vector2.zero;
-    public LayerMask layerMask;
+    public LayerMask wallLayerMask;
 
     void OnEnable()
     {
@@ -38,9 +38,9 @@ public class PathfindController : MonoBehaviour
         pos -= nodeOffset;
         return new Vector2Int(Mathf.RoundToInt(pos.x / nodeDistance), Mathf.RoundToInt(pos.y / nodeDistance));
     }
-    public bool Passable(Vector2 a, Vector2 b) => !(Physics2D.Linecast(a, b, layerMask) || Physics2D.Linecast(b, a, layerMask));
+    public bool Passable(Vector2 a, Vector2 b, LayerMask layerMask) => !(Physics2D.Linecast(a, b, layerMask) || Physics2D.Linecast(b, a, layerMask));
 
-    NodeConnection[] NeighborNodes(Vector2Int id)
+    NodeConnection[] NeighborNodes(Vector2Int id, LayerMask layerMask)
     {
         Vector2 origin = NodeAt(id).position;
         NodeConnection Connection(Vector2Int b)
@@ -50,7 +50,7 @@ public class PathfindController : MonoBehaviour
             {
                 id = b,
                 position = bPos,
-                passable = Passable(origin, bPos)
+                passable = Passable(origin, bPos, layerMask)
             };
         }
         return new NodeConnection[]{
@@ -100,7 +100,7 @@ public class PathfindController : MonoBehaviour
     }
     // public int limit = 0;
     // List<Vector2Int> visitedNodes = new List<Vector2Int>();
-    public List<Vector2> Search(Vector2 fromPos, Vector2 toPos)
+    public List<Vector2> Search(Vector2 fromPos, Vector2 toPos, LayerMask layerMask)
     {
         var from = NodeAtPos(fromPos);
         var to = NodeAtPos(toPos);
@@ -124,7 +124,7 @@ public class PathfindController : MonoBehaviour
                 return null;
             }
             var currentPos = NodeAt(currentNode).position;
-            foreach (var neighbor in NeighborNodes(currentNode))
+            foreach (var neighbor in NeighborNodes(currentNode, layerMask))
             {
                 if (neighbor.passable)
                 {
@@ -168,7 +168,7 @@ public class PathfindController : MonoBehaviour
         do
         {
             var parent = distance[nextNode].parent;
-            if (!Passable(NodeAt(parent).position, NodeAt(currentNode).position))
+            if (!Passable(NodeAt(parent).position, NodeAt(currentNode).position, layerMask))
             {
                 path.Add(NodeAt(nextNode).position);
                 currentNode = nextNode;
