@@ -163,6 +163,15 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    void OnDestroy()
+    {
+        foreach (var weapon in weapons)
+        {
+            weapon.onPrimary.Invoke(false);
+            weapon.onSecondary.Invoke(false);
+        }
+    }
+
     void LateUpdate()
     {
         primaryWeapon.onPrimary.Invoke(true);
