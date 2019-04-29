@@ -20,7 +20,7 @@ public class GetSoulsFromTempHealth : MonoBehaviour
     {
         if (AggroTracker.instance.aggros.Count == 0)
         {
-            souls += health.tempHealth.num;
+            souls += health.tempHealth.num / 2;
             health.tempHealth.num = 0;
         }
         onSoulsChanged.Invoke(souls);

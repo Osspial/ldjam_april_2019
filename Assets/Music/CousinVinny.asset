@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d00d9a27637fa4a93269ef34eaa71a, type: 3}
+  m_Name: CousinVinny
+  m_EditorClassIdentifier: 
+  introTime: 1.514
+  intro: {fileID: 8300000, guid: 2b550a1908055ac4290954f6e1b099c9, type: 3}
+  bodyTime: 47.974
+  body: {fileID: 8300000, guid: 255084941865e744ea57fbe194651d48, type: 3}
+  outro: {fileID: 8300000, guid: 493e94dd1c4b539448b1fd2bdbebce0a, type: 3}
+  fadeOut: 0.05

@@ -11,9 +11,10 @@ public class TextSlowlyAppear : MonoBehaviour
     [TextArea]
     public string targetText;
     public Text text;
-    public Animator hearse;
     public UnityEvent appearingEvent;
     public UnityEvent doneAppearingEvent;
+    public AudioSource source;
+    public AudioClip talkSound;
     private bool? doneAppearingEventLastInvoke = null;
 
     public void Clear()
@@ -25,10 +26,11 @@ public class TextSlowlyAppear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - lastAppear >= charPer)
+        if (Time.time - lastAppear >= charPer && !doneAppearing)
         {
             text.text = targetText.Substring(0, Math.Min(targetText.Length, text.text.Length + 1));
             lastAppear = Time.time;
+            source.PlayOneShot(talkSound);
         }
 
         if (doneAppearingEventLastInvoke != doneAppearing)

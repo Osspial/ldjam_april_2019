@@ -8,6 +8,7 @@ public class TextDialogAdvancer : MonoBehaviour
     public string[] lines;
     public int index = 0;
     public TextSlowlyAppear appear;
+    public GameObject toggle;
     public UnityEvent done;
 
     public void Advance()
@@ -18,10 +19,12 @@ public class TextDialogAdvancer : MonoBehaviour
             index += 1;
             if (index == lines.Length)
             {
+                toggle?.SetActive(false);
                 done.Invoke();
             }
             else if (index < lines.Length)
             {
+                toggle?.SetActive(true);
                 appear.targetText = lines[index];
             }
         }
