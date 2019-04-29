@@ -146,7 +146,10 @@ public class Weapon : MonoBehaviour
             shooter.Shoot(activeWeapon);
         }
 
-        fallable.fall = shooter.liftTime == 0;
+        if (fallable)
+        {
+            fallable.fall = shooter.liftTime == 0;
+        }
 
         foreach (var weapon in weapons)
         {

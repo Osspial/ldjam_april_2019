@@ -5,8 +5,8 @@ using UnityEngine;
 public class ShootAtPlayer : MonoBehaviour
 {
     Player player;
-    public Weapon.WeaponArrayEntry weapon;
-    public Shooter shooter;
+    public Weapon weapon;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +16,10 @@ public class ShootAtPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float hitTime = (player.transform.position - shooter.transform.position).magnitude / weapon.data.bulletSpeed;
+        float hitTime = (player.transform.position - weapon.shooter.transform.position).magnitude / weapon.activeWeapon.data.bulletSpeed;
         Vector2 target = player.transform.position.xy() + player.rigidbody.velocity * hitTime;
-        shooter.direction = (target - shooter.transform.position.xy()).normalized;
-        shooter.Shoot(weapon);
+        weapon.shooter.direction = (target - weapon.shooter.transform.position.xy()).normalized;
+        animator.SetFloat("WeaponRotate", Vector2.SignedAngle(Vector2.right, weapon.shooter.direction) / 360f);
+        weapon.PullTrigger();
     }
 }

@@ -43,10 +43,6 @@ public class CirclePlayer : MonoBehaviour
             activeRadius *= .95f;
             limit -= 1;
         } while (Physics2D.OverlapPoint(pos, contactFilter, overlaps) == 0 && limit != 0);
-        foreach (var overlap in overlaps)
-        {
-            Debug.Log(overlap.name);
-        }
 
         trackPos.Invoke(pos);
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Health : MonoBehaviour
     public IntChange tempHealth = new IntChange(0);
     public IntEvent onHealthChange;
     public IntEvent onTempHealthChange;
+    public UnityEvent onDie;
     public GameObject create;
     public bool reloadOnKill;
 
@@ -57,6 +59,7 @@ public class Health : MonoBehaviour
                 c.transform.parent = transform.parent;
                 c.transform.position = transform.position;
             }
+            onDie.Invoke();
             Destroy(gameObject);
             if (reloadOnKill)
             {
