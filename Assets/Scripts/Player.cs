@@ -7,11 +7,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Health))]
+[RequireComponent(typeof(Fallable))]
 public class Player : MonoBehaviour
 {
     new Rigidbody2D rigidbody;
     Animator animator;
     Health health;
+    Fallable fallable;
 
     public float sprintTime = 10;
     public float sprintUseRate = 1;
@@ -37,6 +39,7 @@ public class Player : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         health = GetComponent<Health>();
+        fallable = GetComponent<Fallable>();
     }
 
     Vector2 mousePosition
@@ -96,11 +99,21 @@ public class Player : MonoBehaviour
         rigidbody.velocity += moveDirection * Time.deltaTime;
 
         weapon.direction = mouseDirection;
-        if (Input.GetButtonDown("Shoot"))
+        if (Input.GetButtonDown("ShootMain") && !weapon.pulled)
         {
+            weapon.activeSlot = Weapon.Slot.Primary;
             weapon.PullTrigger();
         }
-        if (Input.GetButtonUp("Shoot"))
+        if (Input.GetButtonDown("ShootAlt") && !weapon.pulled && weapon.secondaryWeapon != null)
+        {
+            weapon.activeSlot = Weapon.Slot.Secondary;
+            weapon.PullTrigger();
+        }
+        if (Input.GetButtonUp("ShootMain") && weapon.activeSlot == Weapon.Slot.Primary)
+        {
+            weapon.ReleaseTrigger();
+        }
+        if (Input.GetButtonUp("ShootAlt") && weapon.activeSlot == Weapon.Slot.Secondary)
         {
             weapon.ReleaseTrigger();
         }
@@ -120,9 +133,9 @@ public class Player : MonoBehaviour
         }
         if (switchDelta != 0)
         {
-            var switchTrigger = weapon.SwitchWeapon(switchDelta).name;
-            animator.SetTrigger(switchTrigger);
+            weapon.SwitchWeapon(switchDelta);
         }
+        animator.SetTrigger(weapon.activeWeapon.data.name);
 
         var maxSpeed = activeData.maxSpeedCurve.Evaluate(timeSinceMoveStart);
         if (moveDirection.magnitude > 0 && Vector2.Dot(rigidbody.velocity, moveDirection) > 0)
@@ -137,6 +150,7 @@ public class Player : MonoBehaviour
         animator.SetFloat("velX", Mathf.Round(Mathf.Clamp(lookDirection.x, -1, 1)));
         animator.SetFloat("velY", Mathf.Round(Mathf.Clamp(lookDirection.y, -1, 1)));
         animator.SetFloat("speed", Mathf.Lerp(0.2f, 1.0f, normalizedSpeed));
+        animator.SetBool("Hover", !fallable.fall);
     }
 
     private float normalizedSpeed
