@@ -4,29 +4,45 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public int health
+    public int totalHealth
     {
-        get => _health.num;
-        set => _health.num = value;
+        get => health.num + tempHealth.num;
     }
-    [SerializeField]
-    private IntChange _health = new IntChange(4);
+    public IntChange health = new IntChange(4);
+    public IntChange tempHealth = new IntChange(0);
     public IntEvent onHealthChange;
+    public IntEvent onTempHealthChange;
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        if (tempHealth.num > 0)
+        {
+            tempHealth.num -= damage;
+            if (tempHealth.num < 0)
+            {
+                health.num += tempHealth.num;
+            }
+        }
+        else
+        {
+            health.num -= damage;
+        }
     }
 
     void LateUpdate()
     {
-        if (_health.changed)
+        if (health.changed)
         {
-            onHealthChange.Invoke(health);
+            onHealthChange.Invoke(health.num);
         }
-        _health.Reset();
+        health.Reset();
+        if (tempHealth.changed)
+        {
+            onTempHealthChange.Invoke(tempHealth.num);
+        }
+        tempHealth.Reset();
 
-        if (health <= 0)
+        if (totalHealth <= 0)
         {
             Destroy(gameObject);
         }

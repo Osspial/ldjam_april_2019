@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetButtonDown("Reload"))
         {
-            health.health -= weapon.Reload();
+            health.TakeDamage(weapon.Reload());
         }
         var switchAxis = Input.GetAxis("WeaponSwitch");
         var switchDelta = 0;
