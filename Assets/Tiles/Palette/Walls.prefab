@@ -311,10 +311,28 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: -8, y: 4, z: 0}
+    second:
+      m_TileIndex: 32
+      m_TileSpriteIndex: 32
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
   - first: {x: -7, y: 4, z: 0}
     second:
       m_TileIndex: 23
       m_TileSpriteIndex: 23
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -6, y: 4, z: 0}
+    second:
+      m_TileIndex: 31
+      m_TileSpriteIndex: 31
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -384,6 +402,10 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: b7923ccb188fa30419fc5a5ce438a5cd, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 3efccb726f4ba554c8ee36629777d137, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 599646f803df8494fb1f6ddf3df10644, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: c923212288bf0d742b5ba9a956b87264, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: e0a5a4b66a6ed8a43b4d84466582c0e2, type: 3}
@@ -450,8 +472,12 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: c05554732236e5440b49eecf5260ac27, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 166d54f0cd533e145a3d98ddc44f6f0a, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: bbdf46ece0f4ec349be5b50ac04eda6e, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: e5a13cf2f71c7dc4496979b0c2abc195, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 31
+  - m_RefCount: 33
     m_Data:
       e00: 1
       e01: 0
@@ -470,7 +496,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 31
+  - m_RefCount: 33
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: -8.534824e-26, g: -8.534824e-26, b: -8.534824e-26, a: -8.534824e-26}
