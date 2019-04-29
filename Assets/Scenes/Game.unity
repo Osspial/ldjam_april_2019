@@ -21151,15 +21151,20 @@ PrefabInstance:
       propertyPath: sprintChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1083276930}
+    - target: {fileID: 6545206486331397270, guid: d787410deb280794d89c58f92772b4ac,
+        type: 3}
+      propertyPath: sprintChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1083276930}
     - target: {fileID: 6545206486331397485, guid: d787410deb280794d89c58f92772b4ac,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 102.8
+      value: 1.84
       objectReference: {fileID: 0}
     - target: {fileID: 6545206486331397485, guid: d787410deb280794d89c58f92772b4ac,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -23.3
+      value: 4.13
       objectReference: {fileID: 0}
     - target: {fileID: 6545206486331397485, guid: d787410deb280794d89c58f92772b4ac,
         type: 3}
@@ -21268,7 +21273,7 @@ PrefabInstance:
       objectReference: {fileID: 537009318}
     - target: {fileID: 788980560, guid: d787410deb280794d89c58f92772b4ac, type: 3}
       propertyPath: weapons.Array.data[1].unlocked.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d787410deb280794d89c58f92772b4ac, type: 3}
