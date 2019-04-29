@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraLag : MonoBehaviour
 {
-    public Transform target;
+    Transform target;
     public Vector2 realPosition;
     public float maxDistance = 5.0f;
     public float snapToMaxDistance = 0.1f;
@@ -15,6 +15,7 @@ public class CameraLag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        target = FindObjectOfType<Player>().transform;
         if (target)
         {
             var damped = Vector2.SmoothDamp(realPosition, target.position, ref velocity, dampTime);

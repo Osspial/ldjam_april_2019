@@ -30,5 +30,6 @@ public class VinnyTalkToggle : MonoBehaviour
     {
         FindObjectOfType<MusicController>().StartTrack(track);
         FindObjectOfType<Player>().enabled = true;
+        FindObjectOfType<CheckpointController>().Save();
     }
 }

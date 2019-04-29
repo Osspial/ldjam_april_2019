@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
     public IntEvent onHealthChange;
     public IntEvent onTempHealthChange;
     public GameObject create;
+    public bool reloadOnKill;
 
     public void TakeDamage(int damage)
     {
@@ -53,9 +54,14 @@ public class Health : MonoBehaviour
             if (create)
             {
                 var c = Instantiate(create);
+                c.transform.parent = transform.parent;
                 c.transform.position = transform.position;
             }
             Destroy(gameObject);
+            if (reloadOnKill)
+            {
+                FindObjectOfType<CheckpointController>().Load();
+            }
         }
     }
 }
