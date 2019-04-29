@@ -71,6 +71,9 @@ public class Player : MonoBehaviour
         Vector2 axisDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         Vector2 mouseDirection = (mousePosition - transform.position.xy()).normalized;
         Vector2 moveDirection = axisDirection * activeData.moveSpeedMultiplier;
+
+        animator.SetFloat("WeaponRotate", Vector2.SignedAngle(Vector2.right, mouseDirection) / 360f);
+
         if (axisDirection.magnitude > 0.1)
         {
             rigidbody.drag = activeData.walkingDrag;
@@ -114,11 +117,7 @@ public class Player : MonoBehaviour
             // }
         }
 
-        var lookDirection = rigidbody.velocity;
-        if (weapon.pulled)
-        {
-            lookDirection = mouseDirection;
-        }
+        var lookDirection = mouseDirection;
         animator.SetFloat("velX", Mathf.Round(Mathf.Clamp(lookDirection.x, -1, 1)));
         animator.SetFloat("velY", Mathf.Round(Mathf.Clamp(lookDirection.y, -1, 1)));
         animator.SetFloat("speed", Mathf.Lerp(0.2f, 1.0f, normalizedSpeed));

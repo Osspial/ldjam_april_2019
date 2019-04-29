@@ -17,8 +17,9 @@ MonoBehaviour:
   fireSpeed: 0.53
   bulletSpeed: 30
   knockback: 6
-  reloadTime: 0.4
+  reloadTime: 0.7
   reloadCost: 1
   damage: 6
   sound:
   - {fileID: 8300000, guid: 34562011df2e8be41bf31b0ed7485413, type: 3}
+  reload: {fileID: 8300000, guid: c8c714cd4fdfee04eb254107989342ed, type: 3}
