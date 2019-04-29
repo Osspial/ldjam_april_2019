@@ -8,12 +8,16 @@ using UnityEngine.UI;
 public class TextSlowlyAppear : MonoBehaviour
 {
     public float charPer = 0.05f;
+    [TextArea]
     public string targetText;
-    Text text;
+    public Text text;
+    public Animator hearse;
+    public BoolEvent doneAppearingEvent;
+    private bool doneAppearingEventLastInvoke = false;
 
-    void Start()
+    public void Clear()
     {
-        text = GetComponent<Text>();
+        text.text = "";
     }
 
     private float lastAppear = -1000;
@@ -24,6 +28,25 @@ public class TextSlowlyAppear : MonoBehaviour
         {
             text.text = targetText.Substring(0, Math.Min(targetText.Length, text.text.Length + 1));
             lastAppear = Time.time;
+            if (!doneAppearing)
+            {
+                hearse.SetFloat("TalkState", 1);
+            }
         }
+        else if (doneAppearing)
+        {
+            hearse.SetFloat("TalkState", 0.5f);
+        }
+
+        if (doneAppearingEventLastInvoke != doneAppearing)
+        {
+            doneAppearingEventLastInvoke = doneAppearing;
+            doneAppearingEvent.Invoke(doneAppearing);
+        }
+    }
+
+    public bool doneAppearing
+    {
+        get => targetText.Length == text.text.Length;
     }
 }
