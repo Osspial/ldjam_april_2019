@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(AudioSource))]
 public class Weapon : MonoBehaviour
@@ -8,29 +11,55 @@ public class Weapon : MonoBehaviour
     public Rigidbody2D holder;
 
     public MoveWithRotation bulletTemplate;
-    public IntChange bulletsInClip;
-    public IntEvent onAmmoChange;
-    public WeaponData weaponData;
     public Vector2 direction;
+    public int activeWeaponIndex;
+    public bool pulled = false;
+    public WeaponArrayEntry[] weapons;
+
+    [Serializable]
+    public class WeaponArrayEntry
+    {
+        public WeaponData data;
+        public IntChange bulletsInClip;
+        public BoolChange unlocked = new BoolChange(false);
+        public IntEvent onAmmoChange;
+        public UnityEvent onUnlock;
+    }
 
     private AudioSource source;
 
     private float lastShootTime = -1000;
-    public bool pulled = false;
+
+    public WeaponArrayEntry activeWeapon
+    {
+        get => weapons[activeWeaponIndex];
+    }
+
     public void PullTrigger()
     {
-        if (bulletsInClip.num != 0 && Time.time - lastShootTime > weaponData.fireSpeed)
+        if (activeWeapon.bulletsInClip.num != 0 && Time.time - lastShootTime > activeWeapon.data.fireSpeed)
         {
-            bulletsInClip.num -= 1;
-            MoveWithRotation bullet = Instantiate(bulletTemplate);
-            bullet.speed = weaponData.bulletSpeed;
-            bullet.direction = direction;
+            activeWeapon.bulletsInClip.num -= 1;
             lastShootTime = Time.time;
-            holder.velocity -= direction * weaponData.knockback;
-            bullet.transform.position = transform.position;
-            bullet.GetComponent<TriggerBullet>().damage = weaponData.damage;
+            for (int i = 0; i < activeWeapon.data.bulletsPerShot; i++)
+            {
+                var angle = Mathf.Lerp(-activeWeapon.data.bulletSpread, activeWeapon.data.bulletSpread, ((float)i / activeWeapon.data.bulletsPerShot));
+                MoveWithRotation bullet = Instantiate(bulletTemplate);
+                bullet.speed = activeWeapon.data.bulletSpeed;
+                bullet.direction = Quaternion.Euler(0, 0, angle) * direction;
+                bullet.transform.position = transform.position;
+                bullet.GetComponent<TriggerBullet>().damage = activeWeapon.data.damage;
+            }
+            if (activeWeapon.data.zeroBaseSpeed)
+            {
+                holder.velocity = Vector2.zero;
+            }
+            holder.velocity -= direction * activeWeapon.data.knockback;
             pulled = true;
-            source.PlayOneShot(weaponData.sound[Random.Range(0, weaponData.sound.Length - 1)]);
+            if (activeWeapon.data.sound.Length > 0)
+            {
+                source.PlayOneShot(activeWeapon.data.sound[Random.Range(0, activeWeapon.data.sound.Length - 1)]);
+            }
         }
     }
 
@@ -44,17 +73,20 @@ public class Weapon : MonoBehaviour
     {
         IEnumerator ReloadCoroutine()
         {
-            source.PlayOneShot(weaponData.reload);
-            yield return new WaitForSeconds(weaponData.reloadTime);
-            bulletsInClip.num = weaponData.clipSize;
+            if (activeWeapon.data.reload)
+            {
+                source.PlayOneShot(activeWeapon.data.reload);
+            }
+            yield return new WaitForSeconds(activeWeapon.data.reloadTime);
+            activeWeapon.bulletsInClip.num = activeWeapon.data.clipSize;
             reloading = false;
         }
 
-        if (reloading == false)
+        if (reloading == false && activeWeapon.bulletsInClip.num < activeWeapon.data.clipSize)
         {
             reloading = true;
             StartCoroutine(ReloadCoroutine());
-            return weaponData.reloadCost;
+            return activeWeapon.data.reloadCost;
         }
         else
         {
@@ -62,23 +94,48 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    public WeaponData SwitchWeapon(int delta)
+    {
+        do
+        {
+            activeWeaponIndex += delta;
+            activeWeaponIndex %= weapons.Length;
+            if (activeWeaponIndex < 0)
+            {
+                activeWeaponIndex = weapons.Length - 1;
+            }
+        } while (!activeWeapon.unlocked.b);
+        return activeWeapon.data;
+    }
+
     void Start()
     {
-        bulletsInClip.num = weaponData.clipSize;
+        foreach (var weapon in weapons)
+        {
+            weapon.bulletsInClip.num = weapon.data.clipSize;
+        }
         source = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        if (weaponData.autoFire && pulled)
+        if (activeWeapon.data.autoFire && pulled)
         {
             PullTrigger();
         }
 
-        if (bulletsInClip.changed)
+        foreach (var weapon in weapons)
         {
-            onAmmoChange.Invoke(bulletsInClip.num);
+            if (weapon.bulletsInClip.changed)
+            {
+                weapon.onAmmoChange.Invoke(weapon.bulletsInClip.num);
+            }
+            weapon.bulletsInClip.Reset();
+            if (weapon.unlocked.changed && weapon.unlocked.b)
+            {
+                weapon.onUnlock.Invoke();
+            }
+            weapon.unlocked.Reset();
         }
-        bulletsInClip.Reset();
     }
 }

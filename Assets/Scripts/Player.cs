@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -106,6 +107,21 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Reload"))
         {
             health.health -= weapon.Reload();
+        }
+        var switchAxis = Input.GetAxis("WeaponSwitch");
+        var switchDelta = 0;
+        if (switchAxis < 0)
+        {
+            switchDelta = 1;
+        }
+        else if (switchAxis > 0)
+        {
+            switchDelta = -1;
+        }
+        if (switchDelta != 0)
+        {
+            var switchTrigger = weapon.SwitchWeapon(switchDelta).name;
+            animator.SetTrigger(switchTrigger);
         }
 
         var maxSpeed = activeData.maxSpeedCurve.Evaluate(timeSinceMoveStart);

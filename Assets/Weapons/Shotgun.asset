@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43423980c6df9f4e83d01148b3044e3, type: 3}
+  m_Name: Shotgun
+  m_EditorClassIdentifier: 
+  clipSize: 2
+  autoFire: 0
+  fireSpeed: 0.532
+  bulletSpeed: 30
+  knockback: 32
+  zeroBaseSpeed: 1
+  reloadTime: 0.622
+  reloadCost: 1
+  bulletsPerReload: 0
+  damage: 2
+  bulletSpread: 30
+  bulletsPerShot: 6
+  sound:
+  - {fileID: 8300000, guid: 2470d06501028ce4d8ba57995c7ce536, type: 3}
+  reload: {fileID: 8300000, guid: 09f385bfeeb85b5448dc6972006185bd, type: 3}
