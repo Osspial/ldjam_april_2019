@@ -424,6 +424,7 @@ GameObject:
   - component: {fileID: 6839812830788237930}
   - component: {fileID: 651439858}
   - component: {fileID: 949014460}
+  - component: {fileID: 262248350}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -531,6 +532,12 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: Vector3Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  pathfindLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  viewLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!50 &1021397243205305578
 Rigidbody2D:
   serializedVersion: 4
@@ -682,6 +689,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: BoolEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  viewLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &949014460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,6 +704,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe5ad92f60cdda41bb1d7926dc55788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &262248350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021397243205305582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02bf87ddd7fd1f24f97db019ca2d01d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: IntEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &1021397244199274896
 GameObject:
   m_ObjectHideFlags: 0
