@@ -20,7 +20,7 @@ TagManager:
   - EnemyDamage
   - NoticeTrigger
   - NoTouchPlayer
-  - 
+  - OnlyTouchPlayer
   - 
   - 
   - 

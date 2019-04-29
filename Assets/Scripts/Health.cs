@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
         get => health.num + tempHealth.num;
     }
     public IntChange health = new IntChange(4);
+    public int maxHealth = 99999;
     public IntChange tempHealth = new IntChange(0);
     public IntEvent onHealthChange;
     public IntEvent onTempHealthChange;
@@ -34,6 +35,10 @@ public class Health : MonoBehaviour
     {
         if (health.changed)
         {
+            if (health.num > maxHealth)
+            {
+                health.num = maxHealth;
+            }
             onHealthChange.Invoke(health.num);
         }
         health.Reset();

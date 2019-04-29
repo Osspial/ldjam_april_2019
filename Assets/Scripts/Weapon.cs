@@ -170,6 +170,11 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    public void UnlockWeapon(int weapon)
+    {
+        weapons[weapon].unlocked.b = true;
+    }
+
     void Start()
     {
         foreach (var weapon in weapons)

@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 598255285}
   - component: {fileID: 598255284}
   - component: {fileID: 598255286}
+  - component: {fileID: 1824266257}
   m_Layer: 0
   m_Name: NoticeMeter
   m_TagString: Untagged
@@ -317,6 +318,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1824266257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598255281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b26dda2c2073347976ef726eec3bad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1117692551
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health:
     num: 4
+  maxHealth: 99999
   tempHealth:
     num: 0
   onHealthChange:

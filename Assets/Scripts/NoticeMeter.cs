@@ -61,6 +61,11 @@ public class NoticeMeter : MonoBehaviour
         noticed = true;
         source.PlayOneShot(notice2);
         onNotice.Invoke();
+
+        if (GetComponent<Aggro>() is Aggro a)
+        {
+            AggroTracker.instance.aggros.Add(a);
+        }
     }
 
     void Update()
