@@ -13,11 +13,7 @@ public class MusicController : MonoBehaviour
     {
         if (track != currentTrack)
         {
-            if (coroutine != null)
-            {
-                StopCoroutine(coroutine);
-            }
-            coroutine = StartCoroutine(TransitionTrack(currentTrack, track));
+            coroutine = StartCoroutine(TransitionTrack(currentTrack, track, coroutine));
             currentTrack = track;
         }
     }
@@ -31,16 +27,20 @@ public class MusicController : MonoBehaviour
         }
     }
 
-    IEnumerator TransitionTrack(MusicTrack from, MusicTrack to)
+    IEnumerator TransitionTrack(MusicTrack from, MusicTrack to, Coroutine stopCoroutine)
     {
         if (from != null)
         {
             while (audioSource.volume > 0)
             {
-                audioSource.volume -= from.fadeOut * Time.deltaTime;
+                audioSource.volume -= (1f / from.fadeOut) * Time.deltaTime;
                 yield return null;
             }
             audioSource.Stop();
+        }
+        if (stopCoroutine != null)
+        {
+            StopCoroutine(stopCoroutine);
         }
 
         audioSource.volume = volume;

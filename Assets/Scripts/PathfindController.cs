@@ -117,7 +117,7 @@ public class PathfindController : MonoBehaviour
         var currentNode = from;
         var currentDistance = 0f;
 
-        var limit = 1000;
+        var limit = 100;
         while (currentNode != to)
         {
             limit -= 1;
