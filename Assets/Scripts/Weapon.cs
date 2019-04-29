@@ -42,15 +42,14 @@ public class Weapon : MonoBehaviour
     {
         get
         {
-            var w = weapons[(activeWeaponIndex + 1) % weapons.Length];
-            if (w.unlocked.b)
+            var secondaryIndex = activeWeaponIndex;
+            do
             {
-                return w;
-            }
-            else
-            {
-                return null;
-            }
+                secondaryIndex += 1;
+                secondaryIndex %= weapons.Length;
+            } while (!weapons[secondaryIndex].unlocked.b);
+
+            return weapons[secondaryIndex];
         }
     }
     public WeaponArrayEntry activeWeapon
@@ -155,7 +154,7 @@ public class Weapon : MonoBehaviour
     public void SwitchWeapon(int delta)
     {
         primaryWeapon.onPrimary.Invoke(false);
-        secondaryWeapon.onSecondary.Invoke(false);
+        secondaryWeapon?.onSecondary.Invoke(false);
         activeSlot = Slot.Primary;
         if (!pulled)
         {
