@@ -613,12 +613,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c712f47fa5dcc4f813fff8125f0cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health:
-    num: 6
+  health:
+    num: 4
+  tempHealth:
+    num: 0
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: IntEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  onTempHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: IntEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  create: {fileID: 5860885730846665519, guid: 9b2bdf92551d2b94eabfcc5a9003ae2d, type: 3}
 --- !u!114 &6839812830788237930
 MonoBehaviour:
   m_ObjectHideFlags: 0

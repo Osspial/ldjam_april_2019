@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     public IntChange tempHealth = new IntChange(0);
     public IntEvent onHealthChange;
     public IntEvent onTempHealthChange;
+    public GameObject create;
 
     public void TakeDamage(int damage)
     {
@@ -44,6 +45,11 @@ public class Health : MonoBehaviour
 
         if (totalHealth <= 0)
         {
+            if (create)
+            {
+                var c = Instantiate(create);
+                c.transform.position = transform.position;
+            }
             Destroy(gameObject);
         }
     }
