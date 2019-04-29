@@ -26,7 +26,7 @@ public class Health : MonoBehaviour
         }
         _health.Reset();
 
-        if (health == 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
