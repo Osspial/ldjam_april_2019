@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 449a6d14e5f3d4846981803ac32cf930
+guid: 074df4774fcfb914b81d9f0622f4195d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5447863933950748601
-    second: OakTree1_0
+      213: 7252687051031042545
+    second: WillowTree1_0
   - first:
-      213: -6563117172937961681
-    second: OakTree1_1
+      213: 3455670859269274685
+    second: WillowTree1_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -101,7 +101,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: OakTree1_0
+      name: WillowTree1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,14 +115,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 372bc3f661ed2384da27ad40289ea935
-      internalID: 5447863933950748601
+      spriteID: 7b639a4f4fa15f24a83e33aad0fe865c
+      internalID: 7252687051031042545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OakTree1_1
+      name: WillowTree1_1
       rect:
         serializedVersion: 2
         x: 32
@@ -136,8 +136,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3504e636707dd1f448030f665c35c50b
-      internalID: -6563117172937961681
+      spriteID: 2f0624516b2178c4abf0370113817501
+      internalID: 3455670859269274685
       vertices: []
       indices: 
       edges: []
