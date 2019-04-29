@@ -10,10 +10,14 @@ using UnityEngine;
 [RequireComponent(typeof(Fallable))]
 public class Player : MonoBehaviour
 {
-    new Rigidbody2D rigidbody;
-    Animator animator;
-    Health health;
-    Fallable fallable;
+    [HideInInspector]
+    public new Rigidbody2D rigidbody;
+    [HideInInspector]
+    public Animator animator;
+    [HideInInspector]
+    public Health health;
+    [HideInInspector]
+    public Fallable fallable;
 
     public float sprintTime = 10;
     public float sprintUseRate = 1;
@@ -98,7 +102,7 @@ public class Player : MonoBehaviour
         }
         rigidbody.velocity += moveDirection * Time.deltaTime;
 
-        weapon.direction = mouseDirection;
+        weapon.shooter.direction = mouseDirection;
         if (Input.GetButtonDown("ShootMain") && !weapon.pulled)
         {
             weapon.activeSlot = Weapon.Slot.Primary;

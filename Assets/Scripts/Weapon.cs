@@ -6,15 +6,13 @@ using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Shooter))]
 public class Weapon : MonoBehaviour
 {
-    public Rigidbody2D holder;
+    public Shooter shooter;
 
-    public MoveWithRotation bulletTemplate;
-    public Vector2 direction;
     public int activeWeaponIndex;
     public bool pulled = false;
-    public float liftTime = 0;
     public WeaponArrayEntry[] weapons;
     public Fallable fallable;
 
@@ -29,10 +27,6 @@ public class Weapon : MonoBehaviour
         public BoolEvent onPrimary;
         public BoolEvent onSecondary;
     }
-
-    private AudioSource source;
-
-    private float lastShootTime = -1000;
 
     public WeaponArrayEntry primaryWeapon
     {
@@ -77,46 +71,8 @@ public class Weapon : MonoBehaviour
     {
         if (!pulled)
         {
-            Shoot();
-        }
-    }
-    public void Shoot()
-    {
-        if (Time.time - lastShootTime > activeWeapon.data.fireSpeed)
-        {
             pulled = true;
-            lastShootTime = Time.time;
-            if (activeWeapon.bulletsInClip.num != 0)
-            {
-                activeWeapon.bulletsInClip.num -= 1;
-                for (int i = 0; i < activeWeapon.data.bulletsPerShot; i++)
-                {
-                    var angle = Mathf.Lerp(-activeWeapon.data.bulletSpread, activeWeapon.data.bulletSpread, ((float)i / activeWeapon.data.bulletsPerShot));
-                    MoveWithRotation bullet = Instantiate(bulletTemplate);
-                    bullet.speed = activeWeapon.data.bulletSpeed;
-                    bullet.direction = Quaternion.Euler(0, 0, angle) * direction;
-                    bullet.transform.position = transform.position;
-                    bullet.GetComponent<TriggerBullet>().damage = activeWeapon.data.damage;
-                }
-                if (activeWeapon.data.zeroBaseSpeed)
-                {
-                    holder.velocity = Vector2.zero;
-                }
-                holder.velocity -= direction * activeWeapon.data.knockback;
-                liftTime += activeWeapon.data.liftTime;
-                if (liftTime > 0)
-                {
-                    liftTime += activeWeapon.data.liftTimeAdditional;
-                }
-                if (activeWeapon.data.sound.Length > 0)
-                {
-                    source.PlayOneShot(activeWeapon.data.sound[Random.Range(0, activeWeapon.data.sound.Length - 1)]);
-                }
-            }
-            else
-            {
-                source.PlayOneShot(activeWeapon.data.empty);
-            }
+            shooter.Shoot(activeWeapon);
         }
     }
 
@@ -134,7 +90,7 @@ public class Weapon : MonoBehaviour
             {
                 if (activeWeapon.data.reload)
                 {
-                    source.PlayOneShot(activeWeapon.data.reload);
+                    shooter.source.PlayOneShot(activeWeapon.data.reload);
                 }
                 yield return new WaitForSeconds(activeWeapon.data.reloadTime);
                 activeWeapon.bulletsInClip.num = activeWeapon.data.clipSize;
@@ -181,22 +137,16 @@ public class Weapon : MonoBehaviour
         {
             weapon.bulletsInClip.num = weapon.data.clipSize;
         }
-        source = GetComponent<AudioSource>();
     }
 
     void Update()
     {
         if (activeWeapon.data.autoFire && pulled)
         {
-            Shoot();
+            shooter.Shoot(activeWeapon);
         }
 
-        fallable.fall = liftTime == 0;
-        liftTime -= Time.deltaTime;
-        if (liftTime < 0)
-        {
-            liftTime = 0;
-        }
+        fallable.fall = shooter.liftTime == 0;
 
         foreach (var weapon in weapons)
         {
