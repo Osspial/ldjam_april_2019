@@ -20244,5 +20244,9 @@ PrefabInstance:
       propertyPath: shooter
       value: 
       objectReference: {fileID: 537009318}
+    - target: {fileID: 788980560, guid: d787410deb280794d89c58f92772b4ac, type: 3}
+      propertyPath: weapons.Array.data[1].unlocked.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d787410deb280794d89c58f92772b4ac, type: 3}
