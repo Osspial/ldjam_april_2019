@@ -9741,11 +9741,13 @@ MonoBehaviour:
   appearingEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: BoolEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   doneAppearingEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: BoolEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1038698162
 GameObject:
   m_ObjectHideFlags: 0
@@ -20763,6 +20765,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6545206486331397270, guid: d787410deb280794d89c58f92772b4ac,
+        type: 3}
+      propertyPath: sprintChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1083276930}
     - target: {fileID: 704316216, guid: d787410deb280794d89c58f92772b4ac, type: 3}
       propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -20771,11 +20778,6 @@ PrefabInstance:
       propertyPath: onTempHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 716499021}
-    - target: {fileID: 6545206486331397270, guid: d787410deb280794d89c58f92772b4ac,
-        type: 3}
-      propertyPath: sprintChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1083276930}
     - target: {fileID: 788980560, guid: d787410deb280794d89c58f92772b4ac, type: 3}
       propertyPath: weapons.Array.data[0].onAmmoChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -20830,7 +20832,7 @@ PrefabInstance:
       objectReference: {fileID: 537009318}
     - target: {fileID: 788980560, guid: d787410deb280794d89c58f92772b4ac, type: 3}
       propertyPath: weapons.Array.data[1].unlocked.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d787410deb280794d89c58f92772b4ac, type: 3}
