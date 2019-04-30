@@ -32,6 +32,7 @@ public class VinnyTalkToggle : MonoBehaviour
         FindObjectOfType<MusicController>().StartTrack(track);
         var player = FindObjectOfType<Player>();
         player.enabled = true;
+        gameObject.SetActive(false);
         player.GetComponent<Health>().maxHealth += 2;
         FindObjectOfType<CheckpointController>().Save();
     }

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d00d9a27637fa4a93269ef34eaa71a, type: 3}
   m_Name: SatanTune
   m_EditorClassIdentifier: 
-  introTime: 0
+  introTime: 21.839
   intro: {fileID: 8300000, guid: 5b3f8aab88a7a86448d9cfa9f532b630, type: 3}
-  bodyTime: 0
+  bodyTime: 116.374
   body: {fileID: 8300000, guid: 7f84d2bec4a9e8745a6336fe807ef7b0, type: 3}
   outro: {fileID: 8300000, guid: 47648cccd11b4eb449c1569ca895ac17, type: 3}
   fadeOut: 0
