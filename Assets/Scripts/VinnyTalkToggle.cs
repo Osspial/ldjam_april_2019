@@ -6,6 +6,7 @@ using UnityEngine;
 public class VinnyTalkToggle : MonoBehaviour
 {
     public MusicTrack theme;
+    public GameObject enableOnEnd;
     public void ToggleTalk(bool talk)
     {
         GetComponent<Animator>().SetBool("Talking", talk);
@@ -33,5 +34,10 @@ public class VinnyTalkToggle : MonoBehaviour
         player.enabled = true;
         player.GetComponent<Health>().maxHealth += 2;
         FindObjectOfType<CheckpointController>().Save();
+    }
+
+    public void EndGame()
+    {
+        enableOnEnd.SetActive(true);
     }
 }

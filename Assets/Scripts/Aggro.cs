@@ -8,4 +8,9 @@ public class Aggro : MonoBehaviour
     {
         AggroTracker.instance.aggros.Remove(this);
     }
+
+    public void SetAggro()
+    {
+        AggroTracker.instance.aggros.Add(this);
+    }
 }
