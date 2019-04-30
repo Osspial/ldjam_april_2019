@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43423980c6df9f4e83d01148b3044e3, type: 3}
+  m_Name: SatanGun
+  m_EditorClassIdentifier: 
+  clipSize: 999999
+  autoFire: 1
+  fireSpeed: 1
+  bulletSpeed: 5
+  knockback: 1
+  zeroBaseSpeed: 0
+  liftTime: 0
+  liftTimeAdditional: 0
+  reloadTime: 0
+  reloadCost: 0
+  bulletsPerReload: 0
+  damage: 2
+  bulletSpread: 0
+  bulletsPerShot: 1
+  sound: []
+  reload: {fileID: 0}
+  empty: {fileID: 0}

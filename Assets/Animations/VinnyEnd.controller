@@ -57,7 +57,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: VinnyEndIntro
+  m_Name: VinnyShotgunIntro
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -71,7 +71,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3dfe291d92306c64cba29a1f2a30e3dc, type: 2}
+  m_Motion: {fileID: 7400000, guid: 820f0f68a515a0c4887c986b94fe5f12, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -83,7 +83,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: VinnyShotgun
+  m_Name: VinnyEnd
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: VelocityX
@@ -271,7 +271,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: VinnyEndOutro
+  m_Name: VinnyShotgunOutro
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -284,7 +284,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c6cd450de96ff1145aed40ca1a4ce97b, type: 2}
+  m_Motion: {fileID: 7400000, guid: 57b381c0db294724ca78497a09fc2dc1, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
